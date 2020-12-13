@@ -8,8 +8,7 @@
                         pattern="[0-9]{7,8}"
                         class="form-control"
                         formControlName="dni"
-                        [ngClass]="{'has-error': !personalDataForm.controls.dni.valid && (personalDataForm.controls.dni.dirty || personalDataForm.controls.dni.touched)}"
-                        (click)="imprimir()">
+                        [ngClass]="{'has-error': !personalDataForm.controls.dni.valid && (personalDataForm.controls.dni.dirty || personalDataForm.controls.dni.touched)}">
                 <span class="input-error" *ngIf="!personalDataForm.controls.dni.valid && (personalDataForm.controls.dni.dirty || personalDataForm.controls.dni.touched) && !personalDataForm.value.dni">
                     Debe ingresar un dni para continuar.
                 </span>

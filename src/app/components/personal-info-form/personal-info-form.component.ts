@@ -42,16 +42,10 @@ export class PersonalInfoFormComponent implements OnInit {
     });
   }
 
-  imprimir(){
-    console.log(this.personalDataForm);
-  }
-
   async getProvinces() {
     await this.georefService.getProvinces().then((res:any) => {
       console.log(res);
       this.provinces = res.provincias.sort((a,b) => (a.nombre > b.nombre) ? 1 : ((b.nombre > a.nombre) ? -1 : 0));
-      // this.getCities(this.provinces[0].id);
-      console.log(this.personalDataForm);
     })
   }
 
