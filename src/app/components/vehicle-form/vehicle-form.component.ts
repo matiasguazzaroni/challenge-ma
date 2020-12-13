@@ -38,14 +38,12 @@ export class VehicleFormComponent implements OnInit {
 
   async getBrands() {
     await this.mercantilAndinaService.getBrands().then((res:any) => {
-      //ordeno alfabeticamente las marcas.
       this.brands = this.utilsFunctionsService.sort(res,'desc');
     })
   }
 
   async getModels(code:Number,year:Number) {
     await this.mercantilAndinaService.getModels(code,year).then((res:any) => {
-      //ordeno alfabeticamente los modelos.
       this.models = this.utilsFunctionsService.sort(res);
     })
   }
@@ -53,7 +51,6 @@ export class VehicleFormComponent implements OnInit {
   async getVersions(code:Number,year:Number,model:String) {
     this.vehicleForm.controls['version'].enable();
     await this.mercantilAndinaService.getVersions(code,year,model).then((res:any) => {
-      //ordeno alfabeticamente los modelos.
       this.versions = this.utilsFunctionsService.sort(res);
     })
   }
