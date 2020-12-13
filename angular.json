@@ -124,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "challenge-ma"
+    }
+  },
+  "defaultProject": "challenge-ma",
+  "cli": {
+    "analytics": false
+  }
 }
