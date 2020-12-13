@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import { NgStepperModule } from 'angular-ng-stepper';
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,8 @@ import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.com
     ReactiveFormsModule,
     HttpClientModule,
     CdkStepperModule,
-    NgStepperModule
+    NgStepperModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
