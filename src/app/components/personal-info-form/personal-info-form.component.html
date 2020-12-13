@@ -1,0 +1,169 @@
+<div class="container">
+    <form class="px-4 py-3" [formGroup]="personalDataForm">
+        <div class="row margin-bottom-15">
+            <div class="col-12 col-md-4">
+                <label class="form-label">DNI (*)</label>
+                <input type="number" 
+                        pattern="[0-9]{7,8}" 
+                        class="form-control"
+                        formControlName="dni"
+                        [ngClass]="{'has-error': !personalDataForm.controls.dni.valid && (personalDataForm.controls.dni.dirty || personalDataForm.controls.dni.touched)}" 
+                        required>
+                <span class="input-error" *ngIf="!personalDataForm.controls.dni.valid && (personalDataForm.controls.dni.dirty || personalDataForm.controls.dni.touched) && !personalDataForm.value.dni">
+                    Debe ingresar un dni para continuar.
+                </span>
+                <span class="input-error" *ngIf="!personalDataForm.controls.dni.valid && personalDataForm.value.dni > 0">
+                    Ha ingresado un dni incorrecto.
+                </span>
+            </div>
+            <div class="col-12 col-md-4">
+                <label class="form-label">Apellido (*)</label>
+                <input type="text" 
+                        minlength="2" 
+                        maxlength="15" 
+                        pattern="[A-Za-z]{2,15}" 
+                        class="form-control" 
+                        formControlName="surname"
+                        [ngClass]="{'has-error': !personalDataForm.controls.surname.valid && (personalDataForm.controls.surname.dirty || personalDataForm.controls.surname.touched)}" 
+                        required>
+                <span class="input-error" *ngIf="!personalDataForm.controls.surname.valid && (personalDataForm.controls.surname.dirty || personalDataForm.controls.surname.touched) && !personalDataForm.value.surname">
+                    Debe ingresar un apellido para continuar.
+                </span>
+                <span class="input-error" *ngIf="!personalDataForm.controls.surname.valid && personalDataForm.value.surname">
+                    Ha ingresado un apellido incorrecto.
+                </span>
+            </div>
+            <div class="col-12 col-md-4">
+                <label class="form-label">Nombre (*)</label>
+                <input type="text"
+                        minlength="2"
+                        maxlength="15"
+                        pattern="[A-Za-z]"
+                        class="form-control"
+                        formControlName="name"
+                        [ngClass]="{'has-error': !personalDataForm.controls.name.valid && (personalDataForm.controls.name.dirty || personalDataForm.controls.name.touched)}" 
+                        required>
+                <span class="input-error" *ngIf="!personalDataForm.controls.name.valid && (personalDataForm.controls.name.dirty || personalDataForm.controls.name.touched) && !personalDataForm.value.name">
+                    Debe ingresar un nombre para continuar.
+                </span>
+                <span class="input-error" *ngIf="!personalDataForm.controls.name.valid && personalDataForm.value.name">
+                    Ha ingresado un nombre incorrecto.
+                </span>
+            </div>
+        </div>
+        <div class="row margin-bottom-15">
+            <div class="col-12 col-md-4">
+                <label class="form-label">Email</label>
+                <input type="email"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}"
+                        class="form-control"
+                        formControlName="email"
+                        [ngClass]="{'has-error': !personalDataForm.controls.email.valid && personalDataForm.value.email}" >
+                <span class="input-error" *ngIf="!personalDataForm.controls.email.valid && personalDataForm.value.email">
+                    Ha ingresado un email incorrecto.
+                </span>
+            </div>
+            <div class="col-12 col-md-4">
+                <label class="form-label">Celular</label>
+                <input type="number" pattern="(?:(?:00)?549?)?0?(?:11|[2368]\d)(?:(?=\d{0,2}15)\d{2})??\d{8}" class="form-control" formControlName="mobile">
+                <span class="input-error" *ngIf="!personalDataForm.controls.mobile.valid && personalDataForm.value.mobile">
+                    Ha ingresado un celular incorrecto.
+                </span>
+            </div>
+            <div class="col-12 col-md-4">
+                <label class="form-label">Teléfono</label>
+                <input type="number" class="form-control" formControlName="phone" min="7" max="8">
+            </div>
+        </div>
+        <div class="row margin-bottom-15">
+            <div class="col-12 col-md-4">
+                <label class="form-label">Provincia (*)</label>
+                <select class="form-select"
+                        (change)="getCities(personalDataForm.value.province)"
+                        formControlName="province"
+                        [ngClass]="{'has-error': !personalDataForm.controls.province.valid && (personalDataForm.controls.province.dirty || personalDataForm.controls.province.touched)}"
+                        required>
+                    <option *ngFor="let prov of provinces" [value]="prov.id">{{prov.nombre}}</option>
+                </select>
+                <span class="input-error" *ngIf="!personalDataForm.controls.province.valid && (personalDataForm.controls.province.dirty || personalDataForm.controls.province.touched) && !personalDataForm.value.province">
+                    Debe seleccionar una provincia para continuar.
+                </span>
+            </div>
+            <div class="col-12 col-md-4">
+                <label class="form-label">Ciudad (*)</label>
+                <select class="form-select"
+                        formControlName="city"
+                        [ngClass]="{'has-error': !personalDataForm.controls.city.valid && (personalDataForm.controls.city.dirty || personalDataForm.controls.city.touched)}"
+                        required>
+                    <option *ngFor="let city of cities" [value]="city.id">{{city.nombre}}</option>
+                </select>
+                <span class="input-error" *ngIf="!personalDataForm.controls.city.valid && (personalDataForm.controls.city.dirty || personalDataForm.controls.city.touched) && !personalDataForm.value.city">
+                    Debe seleccionar una ciudad para continuar.
+                </span>
+            </div>
+            <div class="col-12 col-md-4">
+                <label class="form-label">Domicilio (*)</label>
+                <input type="text" class="form-control" formControlName="home_address" required>
+                <span class="input-error" *ngIf="!personalDataForm.controls.home_address.valid && (personalDataForm.controls.home_address.dirty || personalDataForm.controls.home_address.touched) && !personalDataForm.value.home_address">
+                    Debe ingresar un domicilio para continuar.
+                </span>
+            </div>
+        </div>
+        <div class="row margin-bottom-15">
+            <div class="col-12 col-md-4">
+                <label class="form-label">Fecha de nacimiento</label>
+                <input type="text"
+                        pattern="([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$"
+                        class="form-control"
+                        formControlName="birthday"
+                        aria-describedby="birthdayHelpBlock">
+                <span class="input-error" *ngIf="!personalDataForm.controls.birthday.valid && personalDataForm.value.birthday">
+                    Ha ingresado una fecha de nacimiento incorrecta.
+                </span>
+                <div id="birthdayHelpBlock" class="form-text">
+                    El formato de su fecha de nacimiento debe ser "dia/mes/año" ejemplo: 15/06/2009
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <label class="form-label">Usuario (*)</label>
+                <input type="text"
+                        minlength="3"
+                        maxlength="30"
+                        class="form-control"
+                        formControlName="user"
+                        (input)="checkUserDisponibility()"
+                        [ngClass]="{'has-error': (!personalDataForm.controls.user.valid && (personalDataForm.controls.user.dirty || personalDataForm.controls.user.touched)) || userExist }"
+                        required>
+                <span class="input-error" *ngIf="!personalDataForm.controls.user.valid && (personalDataForm.controls.user.dirty || personalDataForm.controls.user.touched) && !personalDataForm.value.user">
+                    Debe ingresar un nombre de usuario para continuar.
+                </span>
+                <span class="input-error" *ngIf="!personalDataForm.controls.user.valid && personalDataForm.value.user">
+                    Ha ingresado un nombre de usuario incorrecto.
+                </span>
+                <span class="input-error" *ngIf="userExist">
+                    El usuario ya existe.
+                </span>
+            </div>
+            <div class="col-12 col-md-4">
+                <label class="form-label">Contraseña (*)</label>
+                <input type="password" 
+                        pattern="(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,20}"
+                        class="form-control"
+                        formControlName="password"
+                        [ngClass]="{'has-error': !personalDataForm.controls.password.valid && (personalDataForm.controls.password.dirty || personalDataForm.controls.password.touched)}"
+                        aria-describedby="passwordHelpBlock"
+                        required>
+                <div id="passwordHelpBlock" class="form-text">
+                    Su contraseña debe tener como mínimo 8 caracteres y contener una mayúscula, una minúscula y al menos un número.
+                </div>
+                <span class="input-error" *ngIf="!personalDataForm.controls.password.valid && (personalDataForm.controls.password.dirty || personalDataForm.controls.password.touched) && !personalDataForm.value.password">
+                    Debe ingresar una contraseña para continuar.
+                </span>
+                <span class="input-error" *ngIf="!personalDataForm.controls.password.valid && personalDataForm.value.password">
+                    Ha ingresado una contraseña incorrecta.
+                </span>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" disabled="personalDataForm.status != 'VALID' && !userExist">Sign in</button>
+    </form>
+</div>
