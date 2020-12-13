@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GeorefService } from 'src/app/services/georef.service';
 import { MercantilAndinaMockService } from 'src/app/services/mercantil-andina-mock.service';
 
@@ -27,18 +27,18 @@ export class PersonalInfoFormComponent implements OnInit {
 
   newForm(){
     this.personalDataForm = this.fb.group({
-      dni:[''],
-      surname:[''],
-      name:[''],
+      dni:['', Validators.required],
+      surname:['', Validators.required],
+      name:['', Validators.required],
       email:[''],
       mobile:[''],
       phone:[''],
-      province:[''],
-      city:[''],
-      home_address:[''],
+      province:['', Validators.required],
+      city:['', Validators.required],
+      home_address:['', Validators.required],
       birthday:[''],
-      user:[''],
-      password:[''],
+      user:['', Validators.required],
+      password:['', Validators.required],
     });
   }
 
@@ -50,8 +50,7 @@ export class PersonalInfoFormComponent implements OnInit {
     await this.georefService.getProvinces().then((res:any) => {
       console.log(res);
       this.provinces = res.provincias.sort((a,b) => (a.nombre > b.nombre) ? 1 : ((b.nombre > a.nombre) ? -1 : 0));
-      this.personalDataForm.value.province = this.provinces[0];
-      this.getCities(this.provinces[0].id);
+      // this.getCities(this.provinces[0].id);
       console.log(this.personalDataForm);
     })
   }
