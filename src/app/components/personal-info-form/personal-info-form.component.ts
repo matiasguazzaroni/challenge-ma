@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GeorefService } from 'src/app/services/georef.service';
 import { MercantilAndinaMockService } from 'src/app/services/mercantil-andina-mock.service';
-
+import { UtilsFunctionsService } from 'src/app/utils/utils-functions.service';
 
 @Component({
   selector: 'personal-info-form',
@@ -16,9 +16,12 @@ export class PersonalInfoFormComponent implements OnInit {
   cities;
   userExist:boolean;
 
+  @Output() personal_info = new EventEmitter();
+
   constructor(private fb: FormBuilder,
               public georefService: GeorefService,
-              public mercantilAndinaMockService: MercantilAndinaMockService) { }
+              public mercantilAndinaMockService: MercantilAndinaMockService,
+              public utilsFunctionsService: UtilsFunctionsService) { }
 
   ngOnInit(): void {
     this.getProvinces();
@@ -45,7 +48,7 @@ export class PersonalInfoFormComponent implements OnInit {
   async getProvinces() {
     await this.georefService.getProvinces().then((res:any) => {
       console.log(res);
-      this.provinces = res.provincias.sort((a,b) => (a.nombre > b.nombre) ? 1 : ((b.nombre > a.nombre) ? -1 : 0));
+      this.provinces = this.utilsFunctionsService.sort(res.provincias,'nombre');
     })
   }
 
@@ -53,7 +56,7 @@ export class PersonalInfoFormComponent implements OnInit {
     this.personalDataForm.controls['city'].enable();
     await this.georefService.getCities(id).then((res:any) => {
       console.log(res);
-      this.cities = res.municipios.sort((a,b) => (a.nombre > b.nombre) ? 1 : ((b.nombre > a.nombre) ? -1 : 0));;
+      this.cities = this.utilsFunctionsService.sort(res.municipio,'nombre');
     })
   }
 
@@ -67,5 +70,9 @@ export class PersonalInfoFormComponent implements OnInit {
         this.userExist = res;
       })
     }
+  }
+
+  sendInfo() {
+    this.personal_info.emit(this.personalDataForm.value);
   }
 }

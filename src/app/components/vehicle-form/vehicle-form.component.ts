@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MercantilAndinaService } from 'src/app/services/mercantil-andina.service';
+import { UtilsFunctionsService } from 'src/app/utils/utils-functions.service';
 
 @Component({
   selector: 'vehicle-form',
@@ -15,8 +16,11 @@ export class VehicleFormComponent implements OnInit {
   versions;
   years:Array<number> = [];
 
+  @Output() vehicle_info = new EventEmitter();
+
   constructor(private fb: FormBuilder,
-              public mercantilAndinaService: MercantilAndinaService) { }
+              public mercantilAndinaService: MercantilAndinaService,
+              public utilsFunctionsService: UtilsFunctionsService) { }
 
   ngOnInit(): void {
     this.getBrands();
@@ -34,20 +38,23 @@ export class VehicleFormComponent implements OnInit {
 
   async getBrands() {
     await this.mercantilAndinaService.getBrands().then((res:any) => {
-      this.brands = res.sort((a,b) => (a.nombre > b.nombre) ? 1 : ((b.nombre > a.nombre) ? -1 : 0));
+      //ordeno alfabeticamente las marcas.
+      this.brands = this.utilsFunctionsService.sort(res,'desc');
     })
   }
 
   async getModels(code:Number,year:Number) {
     await this.mercantilAndinaService.getModels(code,year).then((res:any) => {
-      this.models = res.sort((a,b) => (a.nombre > b.nombre) ? 1 : ((b.nombre > a.nombre) ? -1 : 0));
+      //ordeno alfabeticamente los modelos.
+      this.models = this.utilsFunctionsService.sort(res);
     })
   }
 
   async getVersions(code:Number,year:Number,model:String) {
     this.vehicleForm.controls['version'].enable();
     await this.mercantilAndinaService.getVersions(code,year,model).then((res:any) => {
-      this.versions = res.sort((a,b) => (a.nombre > b.nombre) ? 1 : ((b.nombre > a.nombre) ? -1 : 0));
+      //ordeno alfabeticamente los modelos.
+      this.versions = this.utilsFunctionsService.sort(res);
     })
   }
 
@@ -60,6 +67,7 @@ export class VehicleFormComponent implements OnInit {
     }
   }
 
+  //Esta funcion genera a partir del año actual un array de 20 años hacia atras.
   generateYears() {
     let d = new Date();
     let n = d.getFullYear();
@@ -67,11 +75,15 @@ export class VehicleFormComponent implements OnInit {
       this.years.push(n);
       n --;
     }
-    console.log(this.years);
   }
 
   enableModelSelector() {
     this.vehicleForm.controls['model'].enable();
     this.getModels(this.vehicleForm.value.brand,this.vehicleForm.value.year);
   }
+
+  sendInfo() {
+    this.vehicle_info.emit(this.vehicleForm.value);
+  }
+  
 }

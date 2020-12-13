@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'challenge-ma';
+  personal_info;
+  vehicle_info;
+
+  recievePersonalInfo(data) {
+    this.personal_info = data;
+  }
+
+  recieveVehicleInfo(data) {
+    this.vehicle_info = data;
+  }
 }
+
