@@ -10,12 +10,14 @@ import { CdkStepperModule } from '@angular/cdk/stepper';
 import { NgStepperModule } from 'angular-ng-stepper';
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EnsureacesSelectorComponent } from './components/ensureaces-selector/ensureaces-selector.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PersonalInfoFormComponent,
-    VehicleFormComponent
+    VehicleFormComponent,
+    EnsureacesSelectorComponent
   ],
   imports: [
     BrowserModule,
