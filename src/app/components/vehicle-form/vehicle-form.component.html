@@ -1,1 +1,61 @@
-<p>vehicle-form works!</p>
+<div class="container">
+    <div class="title-page"><h4>Paso 2: Ingrese la información de su vehículo</h4></div>
+    <form class="px-4 py-3" [formGroup]="vehicleForm">
+        <div class="row margin-bottom-15">
+            <div class="col-12 col-md-4">
+                <label class="form-label">Marca (*)</label>
+                <select class="form-select"
+                        (change)="enableYearSelector()"
+                        formControlName="brand"
+                        [ngClass]="{'has-error': !vehicleForm.controls.brand.valid && (vehicleForm.controls.brand.dirty || vehicleForm.controls.brand.touched)}">
+                    <option *ngFor="let brand of brands" [value]="brand.codigo">{{brand.desc}}</option>
+                </select>
+                <span class="input-error" *ngIf="!vehicleForm.controls.brand.valid && (vehicleForm.controls.brand.dirty || vehicleForm.controls.brand.touched) && !vehicleForm.value.brand">
+                    Debe seleccionar una marca para continuar.
+                </span>
+            </div>
+            <div class="col-12 col-md-4">
+                <label class="form-label">Año (*)</label>
+                <select class="form-select"
+                        (change)="enableModelSelector()"
+                        formControlName="year"
+                        [ngClass]="{'has-error': !vehicleForm.controls.year.valid && (vehicleForm.controls.year.dirty || vehicleForm.controls.year.touched)}">
+                    <option *ngFor="let year of years" [value]="year">{{year}}</option>
+                </select>
+                <span class="input-error" *ngIf="!vehicleForm.controls.year.valid && (vehicleForm.controls.year.dirty || vehicleForm.controls.year.touched) && !vehicleForm.value.year">
+                    Debe seleccionar un año para continuar.
+                </span>
+            </div>
+            <div class="col-12 col-md-4">
+                <label class="form-label">Modelo (*)</label>
+                <select class="form-select"
+                        (change)="getVersions(this.vehicleForm.value.brand,this.vehicleForm.value.year,this.vehicleForm.value.model)"
+                        formControlName="model"
+                        [ngClass]="{'has-error': !vehicleForm.controls.model.valid && (vehicleForm.controls.model.dirty || vehicleForm.controls.model.touched)}">
+                    <option *ngFor="let model of models" [value]="model">{{model}}</option>
+                </select>
+                <span class="input-error" *ngIf="!vehicleForm.controls.model.valid && (vehicleForm.controls.model.dirty || vehicleForm.controls.model.touched) && !vehicleForm.value.model">
+                    Debe seleccionar un modelo para continuar.
+                </span>
+            </div>
+        </div>
+        <div class="row margin-bottom-15">
+            <div class="col-12 col-md-4">
+                <label class="form-label">Version</label>
+                <select class="form-select"
+                        formControlName="version"
+                        [ngClass]="{'has-error': !vehicleForm.controls.version.valid && (vehicleForm.controls.version.dirty || vehicleForm.controls.version.touched)}">
+                    <option *ngFor="let version of versions" [value]="version.codigo">{{version.desc}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-2">
+                <button style="width: 100%;" type="submit" class="btn btn-primary">Volver</button>
+            </div>
+            <div class="col-md-2">
+                <button style="width: 100%;" type="submit" class="btn btn-primary" [disabled]="vehicleForm.status != 'VALID'">Continuar</button>
+            </div>
+        </div>
+    </form>
+</div>
