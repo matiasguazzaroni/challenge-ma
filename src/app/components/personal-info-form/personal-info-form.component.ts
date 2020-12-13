@@ -34,8 +34,8 @@ export class PersonalInfoFormComponent implements OnInit {
       mobile:[''],
       phone:[''],
       province:['', Validators.required],
-      city:['', Validators.required],
-      home_address:['', Validators.required],
+      city:[{value:'', disabled: true}, Validators.required],
+      home_address:[{value:'', disabled: true}, Validators.required],
       birthday:[''],
       user:['', Validators.required],
       password:['', Validators.required],
@@ -56,10 +56,15 @@ export class PersonalInfoFormComponent implements OnInit {
   }
 
   async getCities(id:number) {
+    this.personalDataForm.controls['city'].enable();
     await this.georefService.getCities(id).then((res:any) => {
       console.log(res);
       this.cities = res.municipios.sort((a,b) => (a.nombre > b.nombre) ? 1 : ((b.nombre > a.nombre) ? -1 : 0));;
     })
+  }
+
+  enableHomeAdressInput() {
+    this.personalDataForm.controls['home_address'].enable();
   }
 
   async checkUserDisponibility() {

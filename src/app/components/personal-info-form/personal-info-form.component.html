@@ -3,8 +3,8 @@
         <div class="row margin-bottom-15">
             <div class="col-12 col-md-4">
                 <label class="form-label">DNI (*)</label>
-                <input type="number" 
-                        pattern="[0-9]{7,8}" 
+                <input type="number"
+                        pattern="[0-9]{7,8}"
                         class="form-control"
                         formControlName="dni"
                         [ngClass]="{'has-error': !personalDataForm.controls.dni.valid && (personalDataForm.controls.dni.dirty || personalDataForm.controls.dni.touched)}"
@@ -18,10 +18,10 @@
             </div>
             <div class="col-12 col-md-4">
                 <label class="form-label">Apellido (*)</label>
-                <input type="text" 
-                        maxlength="15" 
-                        pattern="[A-Za-z]{2,15}" 
-                        class="form-control" 
+                <input type="text"
+                        maxlength="15"
+                        pattern="[A-Za-z]{2,15}"
+                        class="form-control"
                         formControlName="surname"
                         [ngClass]="{'has-error': !personalDataForm.controls.surname.valid && (personalDataForm.controls.surname.dirty || personalDataForm.controls.surname.touched)}" >
                 <span class="input-error" *ngIf="!personalDataForm.controls.surname.valid && (personalDataForm.controls.surname.dirty || personalDataForm.controls.surname.touched) && !personalDataForm.value.surname">
@@ -87,6 +87,7 @@
             <div class="col-12 col-md-4">
                 <label class="form-label">Ciudad (*)</label>
                 <select class="form-select"
+                        (change)="enableHomeAdressInput()"
                         formControlName="city"
                         [ngClass]="{'has-error': !personalDataForm.controls.city.valid && (personalDataForm.controls.city.dirty || personalDataForm.controls.city.touched)}">
                     <option *ngFor="let city of cities" [value]="city.id">{{city.nombre}}</option>
@@ -100,8 +101,7 @@
                 <input type="text"
                         class="form-control"
                         formControlName="home_address"
-                        [ngClass]="{'has-error': !personalDataForm.controls.home_address.valid && (personalDataForm.controls.home_address.dirty || personalDataForm.controls.home_address.touched) }"
-                        [disabled]="!personalDataForm.value.province && !personalDataForm.value.city">
+                        [ngClass]="{'has-error': !personalDataForm.controls.home_address.valid && (personalDataForm.controls.home_address.dirty || personalDataForm.controls.home_address.touched) }">
                 <span class="input-error" *ngIf="!personalDataForm.controls.home_address.valid && (personalDataForm.controls.home_address.dirty || personalDataForm.controls.home_address.touched) && !personalDataForm.value.home_address">
                     Debe ingresar un domicilio para continuar.
                 </span>
@@ -143,7 +143,7 @@
             </div>
             <div class="col-12 col-md-4">
                 <label class="form-label">Contraseña (*)</label>
-                <input type="password" 
+                <input type="password"
                         pattern="(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,20}"
                         class="form-control"
                         formControlName="password"
