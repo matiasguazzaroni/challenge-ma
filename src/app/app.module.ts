@@ -8,10 +8,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import { NgStepperModule } from 'angular-ng-stepper';
+import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
 @NgModule({
   declarations: [
     AppComponent,
-    PersonalInfoFormComponent
+    PersonalInfoFormComponent,
+    VehicleFormComponent
   ],
   imports: [
     BrowserModule,
