@@ -1,17 +1,21 @@
 <div class="container">
+    <div class="title-page"><h4>Paso 3: Seleccione el plan que mas se adecue a sus necesidad</h4></div>
     <div class="row justify-content-center">
         <div class="col-12 col-md-5 col-lg-4 col-xl-3 margin-top-15 margin-bottom-15" *ngFor="let ensu of ensureaces">
             <div class="card" style="width: 18rem; width: 100%;" [ngClass]="{'ensureace-selected': ensu.selected}">
+                <div style="text-align: center;" *ngIf="ensu.selected">
+                    <img src="/assets/img/check-circle.svg" alt="" width="32" height="32" title="Bootstrap" class="margin-top-15">
+                </div>
                 <div class="card-body">
-                  <h5 class="card-title">{{ensu.titulo}}</h5>
-                  <p class="card-text">{{ensu.descripcion}}</p>
+                    <h5 class="card-title">{{ensu.titulo}}</h5>
+                    <p class="card-text">{{ensu.descripcion}}</p>
                 </div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Puntaje: {{ensu.puntaje}}</li>
-                  <li class="list-group-item">Costo: ${{ensu.costo | numberFormat}}</li>
-                  <li class="list-group-item">Franquicia: ${{ensu.franquicia | numberFormat}}</li>
-                  <li class="list-group-item" *ngIf="ensu.granizo">Protección contra granizo: Si</li>
-                  <li class="list-group-item" *ngIf="!ensu.granizo">Protección contra granizo: No</li>
+                    <li class="list-group-item">Puntaje: {{ensu.puntaje}}</li>
+                    <li class="list-group-item">Costo: ${{ensu.costo | numberFormat}}</li>
+                    <li class="list-group-item">Franquicia: ${{ensu.franquicia | numberFormat}}</li>
+                    <li class="list-group-item" *ngIf="ensu.granizo">Protección contra granizo: Si</li>
+                    <li class="list-group-item" *ngIf="!ensu.granizo">Protección contra granizo: No</li>
                 </ul>
                 <div class="card-body">
                     <button style="width: 100%;" type="submit" class="btn btn-selector-primary" (click)="selectEnsureace(ensu)" *ngIf="!ensu.selected">Seleccionar</button>
@@ -21,11 +25,11 @@
         </div>
     </div>
     <div class="row justify-content-center">
-      <div class="col-md-2">
-          <button style="width: 100%;" type="submit" class="btn btn-primary" cdkStepperPrevious>Volver</button>
-      </div>
-      <div class="col-md-2">
-          <button style="width: 100%;" type="submit" class="btn btn-primary" cdkStepperNext>Continuar</button>
-      </div>
+        <div class="col-md-2">
+            <button style="width: 100%;" type="submit" class="btn btn-primary" cdkStepperPrevious>Volver</button>
+        </div>
+        <div class="col-md-2">
+            <button style="width: 100%;" type="submit" class="btn btn-primary" [disabled]="!ensureace" cdkStepperNext>Continuar</button>
+        </div>
     </div>
 </div>

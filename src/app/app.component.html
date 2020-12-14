@@ -1,33 +1,35 @@
-<!-- <ng-stepper #cdkStepper [linear]="true">
-  <cdk-step [stepControl]="stepOne.stepOneForm" [optional]="false">
-    <ng-template cdkStepLabel>
-      <div class="step-bullet">1</div>
-    </ng-template>
-    <personal-info-form #stepOne (personal_info)="recievePersonalInfo($event)"></personal-info-form>
-  </cdk-step>
+<div class="margin-top-30">
+  <ng-stepper #cdkStepper [linear]="true">
+    <cdk-step [stepControl]="stepOne.stepOneForm" [optional]="false">
+      <ng-template cdkStepLabel>
+        <div class="step-bullet">1</div>
+      </ng-template>
+      <personal-info-form #stepOne (personal_info)="recievePersonalInfo($event)"></personal-info-form>
+    </cdk-step>
+  
+    <cdk-step [stepControl]="stepTwo.stepTwoForm" [optional]="true">
+      <ng-template cdkStepLabel>
+        <div class="step-bullet">2</div>
+      </ng-template>
+      <vehicle-form #stepTwo (vehicle_info)="recieveVehicleInfo($event)"></vehicle-form>
+    </cdk-step>
+  
+    <cdk-step [stepControl]="stepThree.stepThreeForm" [optional]="false">
+      <ng-template cdkStepLabel>
+        <div class="step-bullet">3</div>
+      </ng-template>
+      <ensureaces-selector #stepThree (ensureace_selected)="recieveEnsureaceInfo($event)"></ensureaces-selector>
+    </cdk-step>
+  
+    <!-- <cdk-step [stepControl]="stepFour.stepFourForm" [optional]="true" [state]="stepFour.state">
+      <ng-template cdkStepLabel>
+        <div class="step-bullet">4</div>
+        <div class="step-title">Contact Information</div>
+      </ng-template>
+      <app-step-four #stepFour></app-step-four>
+    </cdk-step> -->
+  
+  </ng-stepper>
+</div>
 
-  <cdk-step [stepControl]="stepTwo.stepTwoForm" [optional]="true">
-    <ng-template cdkStepLabel>
-      <div class="step-bullet">2</div>
-    </ng-template>
-    <vehicle-form #stepTwo (vehicle_info)="recieveVehicleInfo($event)"></vehicle-form>
-  </cdk-step>
-
-  <cdk-step [stepControl]="stepThree.stepThreeForm" [optional]="false">
-    <ng-template cdkStepLabel>
-      <div class="step-bullet">3</div>
-    </ng-template>
-    <ensureaces-selector #stepThree (ensureace_selected)="recieveEnsureaceInfo($event)"></ensureaces-selector>
-  </cdk-step>
-
-  <cdk-step [stepControl]="stepFour.stepFourForm" [optional]="true" [state]="stepFour.state">
-    <ng-template cdkStepLabel>
-      <div class="step-bullet">4</div>
-      <div class="step-title">Contact Information</div>
-    </ng-template>
-    <app-step-four #stepFour></app-step-four>
-  </cdk-step>
-
-</ng-stepper> -->
-
-<ensureaces-selector></ensureaces-selector>
+<!-- <ensureaces-selector></ensureaces-selector> -->

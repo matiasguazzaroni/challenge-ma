@@ -36,10 +36,12 @@ export class EnsureacesSelectorComponent implements OnInit {
     let ensu = this.ensureaces.find(element => element.selected === true);
     if (ensu) ensu.selected = false;
     ensureace.selected = true;
+    this.ensureace = ensureace;
   }
 
   deselectEnsureace(ensureace) {
     ensureace.selected = false;
+    this.ensureace = "";
   }
 
   sendSelectEnsureace() {
