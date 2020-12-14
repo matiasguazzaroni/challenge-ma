@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MercantilAndinaMockService } from 'src/app/services/mercantil-andina-mock.service';
 import { NumberFormatPipe } from 'src/app/utils/number-format.pipe';
 import { UtilsFunctionsService } from 'src/app/utils/utils-functions.service';
@@ -13,6 +13,8 @@ export class EnsureacesSelectorComponent implements OnInit {
 
   ensureaces;
 
+  @Output() ensureace_selected = new EventEmitter();
+
   constructor(public mercantilAndinaMockService: MercantilAndinaMockService,
               public utilsFunctionsService: UtilsFunctionsService) { }
 
@@ -25,6 +27,10 @@ export class EnsureacesSelectorComponent implements OnInit {
       this.ensureaces = this.utilsFunctionsService.sort(res,'puntaje','desc');
       console.log(this.ensureaces);
     })
+  }
+
+  selectEnsureace(ensureace) {
+    this.ensureace_selected.emit(ensureace);
   }
 
 }
