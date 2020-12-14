@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12 col-md-5 col-lg-4 col-xl-3 margin-top-15 margin-bottom-15" *ngFor="let ensu of ensureaces">
-            <div class="card" style="width: 18rem; width: 100%;">
+            <div class="card" style="width: 18rem; width: 100%;" [ngClass]="{'ensureace-selected': ensu.selected}">
                 <div class="card-body">
                   <h5 class="card-title">{{ensu.titulo}}</h5>
                   <p class="card-text">{{ensu.descripcion}}</p>
@@ -14,7 +14,8 @@
                   <li class="list-group-item" *ngIf="!ensu.granizo">Protección contra granizo: No</li>
                 </ul>
                 <div class="card-body">
-                    <button style="width: 100%;" type="submit" class="btn btn-primary" (click)="selectEnsureace(ensu)">Seleccionar</button>
+                    <button style="width: 100%;" type="submit" class="btn btn-selector-primary" (click)="selectEnsureace(ensu)" *ngIf="!ensu.selected">Seleccionar</button>
+                    <button style="width: 100%;" type="submit" class="btn btn-selector-secondary" (click)="deselectEnsureace(ensu)" *ngIf="ensu.selected">Deseleccionar</button>
                 </div>
             </div>
         </div>

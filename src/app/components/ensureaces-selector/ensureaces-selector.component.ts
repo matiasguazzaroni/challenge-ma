@@ -12,7 +12,7 @@ import { UtilsFunctionsService } from 'src/app/utils/utils-functions.service';
 export class EnsureacesSelectorComponent implements OnInit {
 
   ensureaces;
-
+  ensureace;
   @Output() ensureace_selected = new EventEmitter();
 
   constructor(public mercantilAndinaMockService: MercantilAndinaMockService,
@@ -25,12 +25,25 @@ export class EnsureacesSelectorComponent implements OnInit {
   async getEnsureaces() {
     await this.mercantilAndinaMockService.getEnsureaces().then((res:any) => {
       this.ensureaces = this.utilsFunctionsService.sort(res,'puntaje','desc');
+      this.ensureaces.forEach(ensu => {
+        ensu.selected = false;
+      });
       console.log(this.ensureaces);
     })
   }
 
   selectEnsureace(ensureace) {
-    this.ensureace_selected.emit(ensureace);
+    let ensu = this.ensureaces.find(element => element.selected === true);
+    if (ensu) ensu.selected = false;
+    ensureace.selected = true;
+  }
+
+  deselectEnsureace(ensureace) {
+    ensureace.selected = false;
+  }
+
+  sendSelectEnsureace() {
+    this.ensureace_selected.emit(this.ensureace);
   }
 
 }

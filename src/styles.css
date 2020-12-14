@@ -23,3 +23,27 @@
     font-size:14px;
     color:indianred;
 }
+
+/* Botones */
+.btn-selector-primary {
+    color: #fff !important;
+    background-color: #198754 !important;
+    border-color: #0f5132 !important;
+}
+.btn-selector-secondary {
+    color: #0f5132 !important;
+    background-color: #19875475 !important;
+    border-color: #0f5132 !important;
+}
+
+/* Borra selector en inputs numericos */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
