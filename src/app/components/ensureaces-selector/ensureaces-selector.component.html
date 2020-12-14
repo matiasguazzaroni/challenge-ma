@@ -1,1 +1,22 @@
-<p>ensureaces-selector works!</p>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-5 col-lg-4 col-xl-3 margin-top-15 margin-bottom-15" *ngFor="let ensu of ensureaces">
+            <div class="card" style="width: 18rem; width: 100%;">
+                <div class="card-body">
+                  <h5 class="card-title">{{ensu.titulo}}</h5>
+                  <p class="card-text">{{ensu.descripcion}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Puntaje: {{ensu.puntaje}}</li>
+                  <li class="list-group-item">Costo: ${{ensu.costo | numberFormat}}</li>
+                  <li class="list-group-item">Franquicia: ${{ensu.franquicia | numberFormat}}</li>
+                  <li class="list-group-item" *ngIf="ensu.granizo">Protección contra granizo: Si</li>
+                  <li class="list-group-item" *ngIf="!ensu.granizo">Protección contra granizo: No</li>
+                </ul>
+                <div class="card-body">
+                    <button style="width: 100%;" type="submit" class="btn btn-primary">Seleccionar</button>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>

@@ -11,13 +11,15 @@ import { NgStepperModule } from 'angular-ng-stepper';
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EnsureacesSelectorComponent } from './components/ensureaces-selector/ensureaces-selector.component';
+import { NumberFormatPipe } from './utils/number-format.pipe'
 
 @NgModule({
   declarations: [
     AppComponent,
     PersonalInfoFormComponent,
     VehicleFormComponent,
-    EnsureacesSelectorComponent
+    EnsureacesSelectorComponent,
+    NumberFormatPipe
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import { EnsureacesSelectorComponent } from './components/ensureaces-selector/en
     NgStepperModule,
     BrowserAnimationsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [NumberFormatPipe],
+  bootstrap: [AppComponent],
+  exports: [NumberFormatPipe]
 })
 export class AppModule { }

@@ -1,5 +1,9 @@
 /* Guía de estilos global a toda la aplicación.*/
 
+.margin-top-15 {
+    margin-top: 15px !important;
+}
+
 .margin-bottom-15 {
     margin-bottom: 15px;
 }
