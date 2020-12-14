@@ -9,6 +9,7 @@ export class AppComponent {
   title = 'challenge-ma';
   personal_info;
   vehicle_info;
+  ensureace_info;
 
   recievePersonalInfo(data) {
     this.personal_info = data;
@@ -16,6 +17,10 @@ export class AppComponent {
 
   recieveVehicleInfo(data) {
     this.vehicle_info = data;
+  }
+
+  recieveEnsureaceInfo(data) {
+    this.ensureace_info = data;
   }
 }
 

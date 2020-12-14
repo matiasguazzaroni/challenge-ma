@@ -47,16 +47,18 @@ export class PersonalInfoFormComponent implements OnInit {
 
   async getProvinces() {
     await this.georefService.getProvinces().then((res:any) => {
-      console.log(res);
-      this.provinces = this.utilsFunctionsService.sort(res.provincias,'nombre');
+      if (res) {
+        this.provinces = this.utilsFunctionsService.sort(res.provincias,'nombre');
+      }
     })
   }
 
   async getCities(id:number) {
     this.personalDataForm.controls['city'].enable();
     await this.georefService.getCities(id).then((res:any) => {
-      console.log(res);
-      this.cities = this.utilsFunctionsService.sort(res.municipio,'nombre');
+      if (res) {
+        this.cities = this.utilsFunctionsService.sort(res.municipios,'nombre');
+      }
     })
   }
 
