@@ -54,7 +54,7 @@
                 <button style="width: 100%;" type="submit" class="btn btn-primary" cdkStepperPrevious>Volver</button>
             </div>
             <div class="col-md-2">
-                <button style="width: 100%;" type="submit" class="btn btn-primary" [disabled]="vehicleForm.status != 'VALID'" cdkStepperNext>Continuar</button>
+                <button style="width: 100%;" type="submit" class="btn btn-primary" [disabled]="vehicleForm.status != 'VALID'" (click)="sendInfo()" cdkStepperNext>Continuar</button>
             </div>
         </div>
     </form>

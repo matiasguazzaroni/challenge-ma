@@ -44,7 +44,7 @@ export class EnsureacesSelectorComponent implements OnInit {
     this.ensureace = "";
   }
 
-  sendSelectEnsureace() {
+  sendInfo() {
     this.ensureace_selected.emit(this.ensureace);
   }
 
