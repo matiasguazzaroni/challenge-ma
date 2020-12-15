@@ -1,0 +1,11 @@
+<div>{{dataToShow[0]?.personal_info}}</div>
+<div>{{dataToShow[1]?.vehicle_info}}</div>
+<div>{{dataToShow[2]?.ensureace_info}}</div>
+<div class="row justify-content-center">
+    <div class="col-md-2">
+        <button style="width: 100%;" type="submit" class="btn btn-primary" cdkStepperPrevious>Volver</button>
+    </div>
+    <div class="col-md-2">
+        <button style="width: 100%;" type="submit" class="btn btn-primary" (click)="sendInfo()" [disabled]="!dataToShow[0]?.personal_info && !dataToShow[1]?.vehicle_info && !dataToShow[2]?.ensureace_info">Confirmar</button>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-<div class="margin-top-30">
+<div class="margin-top-30" *ngIf="!showSuccessMsg">
   <ng-stepper #cdkStepper [linear]="true">
     <cdk-step [stepControl]="stepOne.stepOneForm" [optional]="false">
       <ng-template cdkStepLabel>
@@ -7,7 +7,7 @@
       <personal-info-form #stepOne (personal_info)="recievePersonalInfo($event)"></personal-info-form>
     </cdk-step>
   
-    <cdk-step [stepControl]="stepTwo.stepTwoForm" [optional]="true">
+    <cdk-step [stepControl]="stepTwo.stepTwoForm" [optional]="false">
       <ng-template cdkStepLabel>
         <div class="step-bullet">2</div>
       </ng-template>
@@ -21,15 +21,16 @@
       <ensureaces-selector #stepThree (ensureace_selected)="recieveEnsureaceInfo($event)"></ensureaces-selector>
     </cdk-step>
   
-    <!-- <cdk-step [stepControl]="stepFour.stepFourForm" [optional]="true" [state]="stepFour.state">
+    <cdk-step [stepControl]="stepFour.stepFourForm" [optional]="false">
       <ng-template cdkStepLabel>
         <div class="step-bullet">4</div>
-        <div class="step-title">Contact Information</div>
       </ng-template>
-      <app-step-four #stepFour></app-step-four>
-    </cdk-step> -->
-  
+      <confirmation-step [dataToShow]="fullData" (show_success_msg)="setSuccessMsg($event)" #stepFour></confirmation-step>
+    </cdk-step>
   </ng-stepper>
+</div>
+<div *ngIf="showSuccessMsg">
+  Su informacion fue recibida correctamente!
 </div>
 
 <!-- <ensureaces-selector></ensureaces-selector> -->

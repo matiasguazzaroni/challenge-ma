@@ -28,7 +28,6 @@ export class EnsureacesSelectorComponent implements OnInit {
       this.ensureaces.forEach(ensu => {
         ensu.selected = false;
       });
-      console.log(this.ensureaces);
     })
   }
 

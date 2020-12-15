@@ -11,7 +11,8 @@ import { NgStepperModule } from 'angular-ng-stepper';
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EnsureacesSelectorComponent } from './components/ensureaces-selector/ensureaces-selector.component';
-import { NumberFormatPipe } from './utils/number-format.pipe'
+import { NumberFormatPipe } from './utils/number-format.pipe';
+import { ConfirmationStepComponent } from './components/confirmation-step/confirmation-step.component'
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NumberFormatPipe } from './utils/number-format.pipe'
     PersonalInfoFormComponent,
     VehicleFormComponent,
     EnsureacesSelectorComponent,
-    NumberFormatPipe
+    NumberFormatPipe,
+    ConfirmationStepComponent
   ],
   imports: [
     BrowserModule,
