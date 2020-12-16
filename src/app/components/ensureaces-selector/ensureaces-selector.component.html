@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="title-page"><h4>Paso 3: Seleccione el plan que mas se adecue a sus necesidad</h4></div>
+    <div class="title-page"><h4>Paso 3: Seleccione el plan que mas se adecue a sus necesidades</h4></div>
     <div class="row justify-content-center">
         <div class="col-12 col-md-5 col-lg-4 col-xl-3 margin-top-15 margin-bottom-15" *ngFor="let ensu of ensureaces">
             <div class="card" style="width: 18rem; width: 100%;" [ngClass]="{'ensureace-selected': ensu.selected}">
@@ -26,10 +26,10 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-md-2">
-            <button style="width: 100%;" type="submit" class="btn btn-primary" cdkStepperPrevious>Volver</button>
+            <button style="width: 100%;" type="submit" class="btn btn-nav-secondary" cdkStepperPrevious>Volver</button>
         </div>
         <div class="col-md-2">
-            <button style="width: 100%;" type="submit" class="btn btn-primary" [disabled]="!ensureace" (click)="sendInfo()" cdkStepperNext>Continuar</button>
+            <button style="width: 100%;" type="submit" class="btn btn-nav-primary" [disabled]="!ensureace" (click)="sendInfo()" cdkStepperNext>Continuar</button>
         </div>
     </div>
 </div>

@@ -39,6 +39,17 @@
     border-color: #0f5132 !important;
 }
 
+.btn-nav-primary {
+    color: #fff !important;
+    background-color: #037ccb !important;
+    border-color: #074873 !important;
+}
+.btn-nav-secondary {
+    color: #037ccb !important;
+    background-color: #fff !important;
+    border-color: #037ccb !important;
+}
+
 /* Borra selector en inputs numericos */
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,

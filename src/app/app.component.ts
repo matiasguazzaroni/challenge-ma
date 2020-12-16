@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +9,12 @@ export class AppComponent {
   title = 'challenge-ma';
   fullData = [];
   showSuccessMsg:Boolean;
+
+  constructor(private cdr:ChangeDetectorRef) {}
+
+  ngAfterViewInit() {
+    this.cdr.detectChanges();
+  }
 
   recievePersonalInfo(data) {
     this.fullData[0]?.personal_info ? this.fullData[0].personal_info == data : this.fullData.push({personal_info:data});

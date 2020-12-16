@@ -13,6 +13,8 @@ export class PersonalInfoFormComponent implements OnInit {
 
   personalDataForm:FormGroup;
   provinces;
+  province_selected;
+  city_selected;
   cities;
   userExist:boolean;
 
@@ -54,6 +56,7 @@ export class PersonalInfoFormComponent implements OnInit {
   }
 
   async getCities(id:number) {
+    this.province_selected = this.provinces.find(element => element.id === id);
     this.personalDataForm.controls['city'].enable();
     await this.georefService.getCities(id).then((res:any) => {
       if (res) {
@@ -63,6 +66,7 @@ export class PersonalInfoFormComponent implements OnInit {
   }
 
   enableHomeAdressInput() {
+    this.city_selected = this.cities.find(element => element.id === this.personalDataForm.value.city);
     this.personalDataForm.controls['home_address'].enable();
   }
 
@@ -75,6 +79,8 @@ export class PersonalInfoFormComponent implements OnInit {
   }
 
   sendInfo() {
+    this.personalDataForm.value.province_name = this.province_selected.nombre;
+    this.personalDataForm.value.city_name = this.city_selected.nombre;
     this.personal_info.emit(this.personalDataForm.value);
   }
 }

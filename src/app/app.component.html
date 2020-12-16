@@ -1,20 +1,20 @@
 <div class="margin-top-30" *ngIf="!showSuccessMsg">
   <ng-stepper #cdkStepper [linear]="true">
-    <cdk-step [stepControl]="stepOne.stepOneForm" [optional]="false">
+    <cdk-step [stepControl]="stepOne.personalDataForm" [optional]="false">
       <ng-template cdkStepLabel>
         <div class="step-bullet">1</div>
       </ng-template>
       <personal-info-form #stepOne (personal_info)="recievePersonalInfo($event)"></personal-info-form>
     </cdk-step>
   
-    <cdk-step [stepControl]="stepTwo.stepTwoForm" [optional]="false">
+    <cdk-step [stepControl]="stepTwo.vehicleForm" [optional]="false">
       <ng-template cdkStepLabel>
         <div class="step-bullet">2</div>
       </ng-template>
       <vehicle-form #stepTwo (vehicle_info)="recieveVehicleInfo($event)"></vehicle-form>
     </cdk-step>
   
-    <cdk-step [stepControl]="stepThree.stepThreeForm" [optional]="false">
+    <cdk-step [completed]="stepThree.ensureace" [optional]="false">
       <ng-template cdkStepLabel>
         <div class="step-bullet">3</div>
       </ng-template>
@@ -29,8 +29,13 @@
     </cdk-step>
   </ng-stepper>
 </div>
-<div *ngIf="showSuccessMsg">
-  Su informacion fue recibida correctamente!
+<div style="text-align: center;" *ngIf="showSuccessMsg">
+  <div>
+    <img src="/assets/img/logo.jpg" alt="" width="350" height="250" title="Bootstrap" class="margin-top-15">
+  </div>
+  <h4 class="margin-top-30">
+    Solicitud recibida con éxito!
+  </h4>
 </div>
 
 <!-- <ensureaces-selector></ensureaces-selector> -->

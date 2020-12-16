@@ -15,6 +15,7 @@ export class VehicleFormComponent implements OnInit {
   models;
   versions;
   years:Array<number> = [];
+  brand_selected;
 
   @Output() vehicle_info = new EventEmitter();
 
@@ -43,6 +44,7 @@ export class VehicleFormComponent implements OnInit {
   }
 
   async getModels(code:Number,year:Number) {
+    this.brand_selected = this.brands.find(element => element.codigo == code);
     await this.mercantilAndinaService.getModels(code,year).then((res:any) => {
       this.models = this.utilsFunctionsService.sort(res);
     })
@@ -77,6 +79,11 @@ export class VehicleFormComponent implements OnInit {
   enableModelSelector() {
     this.vehicleForm.controls['model'].enable();
     this.getModels(this.vehicleForm.value.brand,this.vehicleForm.value.year);
+  }
+
+  setVersionName() {
+    let brand_selected = this.versions.find(element => element.codigo == this.vehicleForm.value.version);
+    this.vehicleForm.value.brand_name = brand_selected.desc;
   }
 
   sendInfo() {

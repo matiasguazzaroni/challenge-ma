@@ -43,6 +43,7 @@
             <div class="col-12 col-md-4">
                 <label class="form-label">Version</label>
                 <select class="form-select"
+                        (change)="setVersionName()"
                         formControlName="version"
                         [ngClass]="{'has-error': !vehicleForm.controls.version.valid && (vehicleForm.controls.version.dirty || vehicleForm.controls.version.touched)}">
                     <option *ngFor="let version of versions" [value]="version.codigo">{{version.desc}}</option>
@@ -51,10 +52,10 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-2">
-                <button style="width: 100%;" type="submit" class="btn btn-primary" cdkStepperPrevious>Volver</button>
+                <button style="width: 100%;" type="submit" class="btn btn-nav-secondary" cdkStepperPrevious>Volver</button>
             </div>
             <div class="col-md-2">
-                <button style="width: 100%;" type="submit" class="btn btn-primary" [disabled]="vehicleForm.status != 'VALID'" (click)="sendInfo()" cdkStepperNext>Continuar</button>
+                <button style="width: 100%;" type="submit" class="btn btn-nav-primary" [disabled]="vehicleForm.status != 'VALID'" (click)="sendInfo()" cdkStepperNext>Continuar</button>
             </div>
         </div>
     </form>

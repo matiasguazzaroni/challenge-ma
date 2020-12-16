@@ -1,11 +1,50 @@
-<div>{{dataToShow[0]?.personal_info}}</div>
-<div>{{dataToShow[1]?.vehicle_info}}</div>
-<div>{{dataToShow[2]?.ensureace_info}}</div>
+<div class="container">
+    <div class="title-page"><h4>Paso 4: Verifique si la información ingresada es correcta</h4></div>
+    <div class="row">
+        <div class="col-12 col-md-4">
+            <h5>Informacion personal:</h5>
+            <ul>
+                <li *ngIf="dataToShow[0]?.personal_info.dni">DNI: {{dataToShow[0]?.personal_info.dni}}</li>
+                <li *ngIf="dataToShow[0]?.personal_info.surname">Apellido: {{dataToShow[0]?.personal_info.surname}}</li>
+                <li *ngIf="dataToShow[0]?.personal_info.name">Nombre: {{dataToShow[0]?.personal_info.name}}</li>
+                <li *ngIf="dataToShow[0]?.personal_info.email">Email: {{dataToShow[0]?.personal_info.email}}</li>
+                <li *ngIf="dataToShow[0]?.personal_info.mobile">Celular: {{dataToShow[0]?.personal_info.mobile}}</li>
+                <li *ngIf="dataToShow[0]?.personal_info.phone">Teléfono: {{dataToShow[0]?.personal_info.phone}}</li>
+                <li *ngIf="dataToShow[0]?.personal_info.province_name">Provincia: {{dataToShow[0]?.personal_info.province_name}}</li>
+                <li *ngIf="dataToShow[0]?.personal_info.city_name">Ciudad: {{dataToShow[0]?.personal_info.city_name}}</li>
+                <li *ngIf="dataToShow[0]?.personal_info.home_address">Dirección: {{dataToShow[0]?.personal_info.home_address}}</li>
+                <li *ngIf="dataToShow[0]?.personal_info.birthday">Fecha de nacimiento: {{dataToShow[0]?.personal_info.birthday}}</li>
+                <li *ngIf="dataToShow[0]?.personal_info.user">Usuario: {{dataToShow[0]?.personal_info.user}}</li>
+            </ul>
+        </div>
+        <div class="col-12 col-md-4">
+            <h5>Informacion de su vehículo:</h5>
+            <ul>
+                <li *ngIf="dataToShow[1]?.vehicle_info.brand_name">Marca: {{dataToShow[1]?.vehicle_info.brand_name}}</li>
+                <li *ngIf="dataToShow[1]?.vehicle_info.year">Año: {{dataToShow[1]?.vehicle_info.year}}</li>
+                <li *ngIf="dataToShow[1]?.vehicle_info.model">Modelo: {{dataToShow[1]?.vehicle_info.model}}</li>
+                <li *ngIf="dataToShow[1]?.vehicle_info.version">Version: {{dataToShow[1]?.vehicle_info.version}}</li>
+            </ul>
+        </div>
+        <div class="col-12 col-md-4">
+            <h5>Informacion de la cobertura:</h5>
+            <ul>
+                <li *ngIf="dataToShow[2]?.ensureace_info.titulo">Título: {{dataToShow[2]?.ensureace_info.titulo}}</li>
+                <li *ngIf="dataToShow[2]?.ensureace_info.descripcion">Descripción: {{dataToShow[2]?.ensureace_info.descripcion}}</li>
+                <li *ngIf="dataToShow[2]?.ensureace_info.puntaje">Puntaje: {{dataToShow[2]?.ensureace_info.puntaje}}</li>
+                <li *ngIf="dataToShow[2]?.ensureace_info.costo">Costo: ${{dataToShow[2]?.ensureace_info.costo | numberFormat}}</li>
+                <li *ngIf="dataToShow[2]?.ensureace_info.franquicia">Franquicia: ${{dataToShow[2]?.ensureace_info.franquicia | numberFormat}}</li>
+                <li *ngIf="dataToShow[2]?.ensureace_info.granizo">Protección contra granizo: Si</li>
+                <li *ngIf="!dataToShow[2]?.ensureace_info.granizo">Protección contra granizo: No</li>
+            </ul>
+        </div>
+    </div>
+</div>
 <div class="row justify-content-center">
     <div class="col-md-2">
-        <button style="width: 100%;" type="submit" class="btn btn-primary" cdkStepperPrevious>Volver</button>
+        <button style="width: 100%;" type="submit" class="btn btn-nav-secondary" cdkStepperPrevious>Volver</button>
     </div>
     <div class="col-md-2">
-        <button style="width: 100%;" type="submit" class="btn btn-primary" (click)="sendInfo()" [disabled]="!dataToShow[0]?.personal_info && !dataToShow[1]?.vehicle_info && !dataToShow[2]?.ensureace_info">Confirmar</button>
+        <button style="width: 100%;" type="submit" class="btn btn-nav-primary" (click)="sendInfo()" [disabled]="!dataToShow[0]?.personal_info && !dataToShow[1]?.vehicle_info && !dataToShow[2]?.ensureace_info">Confirmar</button>
     </div>
 </div>
