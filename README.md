@@ -1,27 +1,20 @@
-# ChallengeMa
+# Challenge Frontend Mercantil Andina
+El proyecto fue desarrollado con:
+- Angular 10
+- Bootstrap 5
+- Npm Angular Stepper
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.5.
+## Personal Info Component
+Este componente es basicamente un formulario para que el usuario pueda incluir sus datos personales. Cada campo posee las validaciones correspondientes al enunciado.
 
-## Development server
+## Vehicle Info Component
+Este componente es un formulario de selectores para que el usuario pueda seleccionar los datos correspondientes a su vehículo.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Ensureaces Selector Component
+En este componente se prensentan las coberturas en formato de cards para que el usuario pueda leer los datos correspondiente a cada una y pueda seleccionar la que crea mas conveniente.
 
-## Code scaffolding
+## Confirmation Step Component
+Este componente se presenta toda la información incorporada por el usuario para que pueda chequear si no hay algun error y confirmar el envío.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Angular Stepper
+Se incorporo la librería [Npm Angular Stepper](https://www.npmjs.com/package/angular-ng-stepper) debido a que bootstrap no tiene un stepper dedicado y era necesario incluir un paso a paso para tener una experiencia de usuario mas satisfactoria.
