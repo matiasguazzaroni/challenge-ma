@@ -1,4 +1,7 @@
 # Challenge Frontend Mercantil Andina
+
+El objetivo del proyecto es lograr de manera ordenada que el usuario ingrese los datos correspondientes para la solicitud de una cobertura. Mediante cuatro pasos el usuario ira ingresando la información hasta poder enviarla.
+
 El proyecto fue desarrollado con:
 - Angular 10
 - Bootstrap 5
